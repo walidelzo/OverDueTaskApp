@@ -185,6 +185,7 @@
                         <viewLayoutGuide key="safeArea" id="CxL-1S-CDm"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="PN1-xa-pVJ" id="QDi-4d-g0g"/>
                         <outlet property="textField" destination="7W2-Qc-Uhg" id="wKG-Uu-LZ1"/>
                         <outlet property="textView" destination="Bvj-et-KZ8" id="tMa-sB-o36"/>
                     </connections>

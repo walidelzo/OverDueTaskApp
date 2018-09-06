@@ -7,8 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "WETask.h"
+@protocol WEAddTaskViewControllerDelegate
+-(void)DidCancle;
+-(void)DidAddTask:(WETask*)task;
+
+@end
+
 
 @interface WEAddTaskViewController : ViewController
+@property (weak,nonatomic) id <WEAddTaskViewControllerDelegate> delegate;
 - (IBAction)saveButtonBarPressd:(UIButton *)sender;
 - (IBAction)CancelbuttonbarPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
