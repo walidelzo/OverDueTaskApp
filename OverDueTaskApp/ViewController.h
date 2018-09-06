@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+- (IBAction)AddNewTaskButtonPressed:(UIBarButtonItem *)sender;
 
+- (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

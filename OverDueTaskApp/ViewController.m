@@ -26,4 +26,9 @@
 }
 
 
+- (IBAction)AddNewTaskButtonPressed:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender {
+}
 @end
