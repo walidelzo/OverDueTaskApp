@@ -34,9 +34,23 @@
 }
 */
 
-- (IBAction)saveButtonBarPressd:(UIButton *)sender {
+-(WETask *)returnANewtaskObject{
+    WETask *task=[[WETask alloc]init];
+    task.taskTitle=_textField.text;
+    task.taskDetail=_textView.text;
+    task.isComplete=NO;
+    task.taskDate=_datePicker.date;
+    return task;
 }
 
-- (IBAction)CancelbuttonbarPressed:(UIButton *)sender {
+- (IBAction)saveButtonBarPressd:(UIButton *)sender
+
+{
+    [self.delegate DidAddTask:[self returnANewtaskObject]];
+}
+
+- (IBAction)CancelbuttonbarPressed:(UIButton *)sender
+{
+    [self.delegate DidCancle];
 }
 @end
