@@ -46,7 +46,17 @@
 - (IBAction)saveButtonBarPressd:(UIButton *)sender
 
 {
-    [self.delegate DidAddTask:[self returnANewtaskObject]];
+    if ([_textField.text isEqualToString:@""] || [_textView.text isEqualToString:@""]){
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"alert message" message:@"enter task title and task detail " preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action=[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    
+    }else[self.delegate DidAddTask:[self returnANewtaskObject]];
+    
+    
+    
 }
 
 - (IBAction)CancelbuttonbarPressed:(UIButton *)sender

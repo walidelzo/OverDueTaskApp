@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WEAddTaskViewController.h"
-@interface ViewController :UIViewController<UIPageViewControllerDelegate>
+@interface ViewController :UIViewController<WEAddTaskViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+
 - (IBAction)AddNewTaskButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
