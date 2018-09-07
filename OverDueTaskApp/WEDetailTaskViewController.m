@@ -39,4 +39,35 @@
 }
 */
 
+
+#pragma  mark segue
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController isKindOfClass:[WEeditTaskViewController class]]){
+        WEeditTaskViewController *WEEditVC=segue.destinationViewController;
+        WEEditVC.task=self.task;
+        WEEditVC.delegete=self;
+    }
+}
+
+#pragma  editTask delegete
+-(void)didCancel{
+    [self.navigationController popViewControllerAnimated:YES ];
+}
+- (void)didUpdateTask{
+    self.taskLabel.text=self.task.taskTitle;
+    self.detailLabel.text=self.task.taskDetail;
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.dateLabel.text=[formatter stringFromDate:self.task.taskDate];
+    [self.navigationController popViewControllerAnimated:YES];
+   // [self.delegete DidupdateTaskLabel];
+}
+
+- (IBAction)editTaskButtonPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"toEditViewControllerSegue" sender:nil];
+}
+
+
+
 @end

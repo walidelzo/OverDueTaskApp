@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    _textField.text=self.task.taskTitle;
+    _textView.text=self.task.taskDetail;
+    _datePicker.date=self.task.taskDate;
 
 }
 
@@ -35,9 +37,21 @@
 }
 */
 
-- (IBAction)SaveButtonPressed:(UIButton *)sender {
+-(void)updateTask{
+    self.task.taskTitle=_textField.text;
+    self.task.taskDetail=_textField.text;
+    self.task.taskDate=_datePicker.date;
 }
 
-- (IBAction)CancelButtonpressed:(UIButton *)sender {
+- (IBAction)SaveButtonPressed:(UIButton *)sender
+{
+    [self updateTask];
+    [self.delegete didUpdateTask];
+    
+}
+
+- (IBAction)CancelButtonpressed:(UIButton *)sender
+{
+    [self.delegete didCancel];
 }
 @end

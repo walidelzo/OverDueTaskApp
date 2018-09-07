@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "WETask.h"
+@protocol WEditTaskViewControllerDelegate <NSObject>
+-(void)didUpdateTask;
+-(void)didCancel;
+@end
 @interface WEeditTaskViewController : UIViewController
-
+@property(weak,nonatomic) id <WEditTaskViewControllerDelegate> delegete;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;

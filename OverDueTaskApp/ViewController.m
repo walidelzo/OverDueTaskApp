@@ -50,7 +50,13 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
     [ self.tableView reloadData];
-    NSLog(@"%@",task.taskTitle);
+   // NSLog(@"%@",task.taskTitle);
+}
+
+#pragma  mark -detail task delegete
+-(void)DidupdateTaskLabel{
+    [self saveTasks];
+    [self.tableView reloadData];
 }
 
 #pragma -mark Helper Methods
@@ -91,6 +97,7 @@
     }
     [[NSUserDefaults standardUserDefaults]setObject:tasksAsPropertyLists forKey:TASK_OBJECTS_KEY];
     [[NSUserDefaults standardUserDefaults]synchronize];
+    [self.tableView reloadData];
     
 }
 
@@ -104,6 +111,7 @@
         WEDetailTaskViewController *detailVC=segue.destinationViewController;
         NSIndexPath *path=sender;
         detailVC.task=self.taskObjects[path.row];
+        detailVC.delegete=self;
         
     }
 }

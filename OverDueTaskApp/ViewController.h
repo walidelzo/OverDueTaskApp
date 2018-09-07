@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WEAddTaskViewController.h"
 #import "WEDetailTaskViewController.h"
-@interface ViewController :UIViewController<WEAddTaskViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ViewController :UIViewController<WEAddTaskViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,WEDetailTaskViewControllerDelegete>
 
 - (IBAction)AddNewTaskButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender;

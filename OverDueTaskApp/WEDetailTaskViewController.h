@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "WETask.h"
-@interface WEDetailTaskViewController : UIViewController
+#import "WEeditTaskViewController.h"
+@protocol WEDetailTaskViewControllerDelegete<NSObject>
+-(void)DidupdateTaskLabel;
+@end
+@interface WEDetailTaskViewController : UIViewController<WEditTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong,nonatomic) WETask *task;
+- (IBAction)editTaskButtonPressed:(UIButton *)sender;
+@property(weak,nonatomic) id <WEDetailTaskViewControllerDelegete> delegete;
 @end
