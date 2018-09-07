@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WETask.h"
 @interface WEeditTaskViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-
+@property (strong,nonatomic) WETask *task;
 - (IBAction)SaveButtonPressed:(UIButton *)sender;
 - (IBAction)CancelButtonpressed:(UIButton *)sender;
 

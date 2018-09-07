@@ -49,7 +49,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:taskObjectAsProperyLists forKey:TASK_OBJECTS_KEY];
     [[NSUserDefaults standardUserDefaults]synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
-   [ self.tableView reloadData];
+    [ self.tableView reloadData];
     NSLog(@"%@",task.taskTitle);
 }
 
@@ -71,7 +71,7 @@
     else return NO;
 }
 -(void)completeTask:(WETask*)task andIndexPath:(NSIndexPath*)indexPath{
-   NSMutableArray* tasksAsAproperyLists=[[[NSUserDefaults standardUserDefaults]arrayForKey:TASK_OBJECTS_KEY] mutableCopy];
+    NSMutableArray* tasksAsAproperyLists=[[[NSUserDefaults standardUserDefaults]arrayForKey:TASK_OBJECTS_KEY] mutableCopy];
     if (!tasksAsAproperyLists) tasksAsAproperyLists =[[NSMutableArray alloc]init];
     [tasksAsAproperyLists removeObjectAtIndex:indexPath.row];
     if (task.isComplete==NO)task.isComplete=YES;
@@ -83,12 +83,28 @@
     
 }
 
+-(void)saveTasks{
+    
+    NSMutableArray *tasksAsPropertyLists=[[NSMutableArray alloc]init];
+    for (int x=0 ;x<[self.taskObjects count];x++){
+        [tasksAsPropertyLists addObject: [self taskObjectAsPropertList: self.taskObjects[x]] ];
+    }
+    [[NSUserDefaults standardUserDefaults]setObject:tasksAsPropertyLists forKey:TASK_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+}
+
 #pragma  -mark segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.destinationViewController isKindOfClass:[WEAddTaskViewController class]]){
         WEAddTaskViewController *weAddVC=segue.destinationViewController;
         weAddVC.delegate=self;
+    }else if ([segue.destinationViewController isKindOfClass:[WEDetailTaskViewController class]]){
+        WEDetailTaskViewController *detailVC=segue.destinationViewController;
+        NSIndexPath *path=sender;
+        detailVC.task=self.taskObjects[path.row];
+        
     }
 }
 
@@ -100,7 +116,11 @@
     [self performSegueWithIdentifier:@"toAddViewControllersegue" sender:sender];
 }
 
-- (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender {
+- (IBAction)ReOrderButtonBarPressed:(UIBarButtonItem *)sender
+
+{
+    if (self.tableView.editing==YES)self.tableView.editing=NO;
+    else self.tableView.editing=YES;
 }
 
 #pragma  mark - TableView DataSource and delegete
@@ -118,7 +138,8 @@
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
     [dateformatter setDateFormat:@"yyyy-MM-dd"];
     cell.detailTextLabel.text=[dateformatter stringFromDate:task.taskDate];
-    if ([self isGreaterthanDate:[NSDate date] anddate:task.taskDate]==YES){
+    if (task.isComplete==YES) cell.backgroundColor=[UIColor greenColor];
+    else if([self isGreaterthanDate:[NSDate date] anddate:task.taskDate]==YES){
         cell.backgroundColor=[UIColor yellowColor];
     }else {
         cell.backgroundColor=[UIColor redColor];
@@ -126,5 +147,43 @@
     return cell;
 }
 
+#pragma  mark -tableveiw delegete
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self completeTask:[self.taskObjects objectAtIndex:indexPath.row] andIndexPath:indexPath];
+    
+}
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle ==UITableViewCellEditingStyleDelete){
+        NSMutableArray *newtasksAfterDelete=[[NSMutableArray alloc]init];
+        [self.taskObjects removeObjectAtIndex:indexPath.row];
+        for (WETask *task in self.taskObjects) {
+            [newtasksAfterDelete addObject:[self taskObjectAsPropertList:task ] ];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:newtasksAfterDelete forKey:TASK_OBJECTS_KEY];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+
+    [self performSegueWithIdentifier:@"toDetailViewControllerSegue" sender:indexPath];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    WETask *task=self.taskObjects[sourceIndexPath.row];
+    [self.taskObjects removeObjectAtIndex:sourceIndexPath.row];
+    [self.taskObjects insertObject:task atIndex:destinationIndexPath.row];
+    [self saveTasks];
+}
 
 @end

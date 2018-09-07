@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WEAddTaskViewController.h"
+#import "WEDetailTaskViewController.h"
 @interface ViewController :UIViewController<WEAddTaskViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 - (IBAction)AddNewTaskButtonPressed:(UIBarButtonItem *)sender;

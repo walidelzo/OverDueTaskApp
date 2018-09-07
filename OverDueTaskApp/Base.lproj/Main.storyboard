@@ -198,7 +198,7 @@
         <scene sceneID="ROG-ze-wSe">
             <objects>
                 <viewController id="eN5-Qa-8My" customClass="WEDetailTaskViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JcC-NB-EqM" customClass="WE">
+                    <view key="view" contentMode="scaleToFill" id="JcC-NB-EqM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -223,6 +223,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3N-1C-h5y">
+                                <rect key="frame" x="251" y="71" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit Task"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bbF-jq-BDd"/>
