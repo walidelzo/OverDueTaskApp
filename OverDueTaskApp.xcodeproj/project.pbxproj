@@ -71,6 +71,12 @@
 		0245EEF72140101400116AD4 /* OverDueTaskApp */ = {
 			isa = PBXGroup;
 			children = (
+				0245EF172141B00700116AD4 /* WEAddTaskViewController.h */,
+				0245EF182141B00700116AD4 /* WEAddTaskViewController.m */,
+				0245EF1A2141B02000116AD4 /* WEDetailTaskViewController.h */,
+				0245EF1B2141B02100116AD4 /* WEDetailTaskViewController.m */,
+				0245EF1D2141B03400116AD4 /* WEeditTaskViewController.h */,
+				0245EF1E2141B03400116AD4 /* WEeditTaskViewController.m */,
 				0245EF212141BF2A00116AD4 /* Model */,
 				0245EEF82140101400116AD4 /* AppDelegate.h */,
 				0245EEF92140101400116AD4 /* AppDelegate.m */,
@@ -82,12 +88,6 @@
 				0245EF012140102F00116AD4 /* Assets.xcassets */,
 				0245EF032140102F00116AD4 /* LaunchScreen.storyboard */,
 				0245EF072140102F00116AD4 /* main.m */,
-				0245EF172141B00700116AD4 /* WEAddTaskViewController.h */,
-				0245EF182141B00700116AD4 /* WEAddTaskViewController.m */,
-				0245EF1A2141B02000116AD4 /* WEDetailTaskViewController.h */,
-				0245EF1B2141B02100116AD4 /* WEDetailTaskViewController.m */,
-				0245EF1D2141B03400116AD4 /* WEeditTaskViewController.h */,
-				0245EF1E2141B03400116AD4 /* WEeditTaskViewController.m */,
 			);
 			path = OverDueTaskApp;
 			sourceTree = "<group>";
@@ -320,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3NK7U77Q3;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OverDueTaskApp/OverDue-Prefix.pch";
 				INFOPLIST_FILE = OverDueTaskApp/Info.plist;
@@ -340,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3NK7U77Q3;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OverDueTaskApp/OverDue-Prefix.pch";
 				INFOPLIST_FILE = OverDueTaskApp/Info.plist;

@@ -6,9 +6,9 @@
 //  Copyright © 2018 walidelzo. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface WEeditTaskViewController : ViewController
+@interface WEeditTaskViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -18,3 +18,4 @@
 - (IBAction)CancelButtonpressed:(UIButton *)sender;
 
 @end
+
