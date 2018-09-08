@@ -13,7 +13,7 @@
 -(void)DidAddTask:(WETask*)task;
 @end
 
-@interface WEAddTaskViewController : UIViewController
+@interface WEAddTaskViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 - (IBAction)saveButtonBarPressd:(UIButton *)sender;
 - (IBAction)CancelbuttonbarPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textField;

@@ -16,10 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _textField.text=self.task.taskTitle;
-    _textView.text=self.task.taskDetail;
-    _datePicker.date=self.task.taskDate;
+    self.textField.delegate=self;
+    self.textView.delegate=self;
 
+    self.textField.text=self.task.taskTitle;
+    self.textView.text=self.task.taskDetail;
+    self.datePicker.date=self.task.taskDate;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,9 +40,9 @@
 */
 
 -(void)updateTask{
-    self.task.taskTitle=_textField.text;
-    self.task.taskDetail=_textView.text;
-    self.task.taskDate=_datePicker.date;
+    self.task.taskTitle=self.textField.text;
+    self.task.taskDetail=self.textView.text;
+    self.task.taskDate=self.datePicker.date;
 }
 
 - (IBAction)SaveButtonPressed:(UIButton *)sender
@@ -54,4 +56,14 @@
 {
     [self.delegete didCancel];
 }
+#pragma mark -textfield and textview delegete
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+[self.textField resignFirstResponder];
+    return YES;
+}
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) [self.textView resignFirstResponder];
+    return YES;
+}
+
 @end

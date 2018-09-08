@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WETask.h"
+#import "Model/WETask.h"
 @protocol WEditTaskViewControllerDelegate <NSObject>
 -(void)EditVCdidUpdateTask;
 -(void)didCancel;
 @end
-@interface WEeditTaskViewController : UIViewController
+@interface WEeditTaskViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 @property(weak,nonatomic) id <WEditTaskViewControllerDelegate> delegete;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong,nonatomic) WETask *task;
+@property (strong,nonatomic) WETask * task;
 - (IBAction)SaveButtonPressed:(UIButton *)sender;
 - (IBAction)CancelButtonpressed:(UIButton *)sender;
 
