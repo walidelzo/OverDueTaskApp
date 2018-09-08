@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WETask.h"
 @protocol WEditTaskViewControllerDelegate <NSObject>
--(void)didUpdateTask;
+-(void)EditVCdidUpdateTask;
 -(void)didCancel;
 @end
 @interface WEeditTaskViewController : UIViewController

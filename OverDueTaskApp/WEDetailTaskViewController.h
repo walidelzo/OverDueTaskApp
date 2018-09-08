@@ -10,7 +10,7 @@
 #import "WETask.h"
 #import "WEeditTaskViewController.h"
 @protocol WEDetailTaskViewControllerDelegete<NSObject>
--(void)DidupdateTaskLabel;
+-(void)DetailVCupdateTask;
 @end
 @interface WEDetailTaskViewController : UIViewController<WEditTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;

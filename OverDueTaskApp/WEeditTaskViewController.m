@@ -39,14 +39,14 @@
 
 -(void)updateTask{
     self.task.taskTitle=_textField.text;
-    self.task.taskDetail=_textField.text;
+    self.task.taskDetail=_textView.text;
     self.task.taskDate=_datePicker.date;
 }
 
 - (IBAction)SaveButtonPressed:(UIButton *)sender
 {
     [self updateTask];
-    [self.delegete didUpdateTask];
+    [self.delegete EditVCdidUpdateTask];
     
 }
 

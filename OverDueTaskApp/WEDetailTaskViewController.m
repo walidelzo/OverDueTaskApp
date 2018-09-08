@@ -53,19 +53,20 @@
 -(void)didCancel{
     [self.navigationController popViewControllerAnimated:YES ];
 }
-- (void)didUpdateTask{
+- (void)EditVCdidUpdateTask{
     self.taskLabel.text=self.task.taskTitle;
     self.detailLabel.text=self.task.taskDetail;
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     self.dateLabel.text=[formatter stringFromDate:self.task.taskDate];
     [self.navigationController popViewControllerAnimated:YES];
-   // [self.delegete DidupdateTaskLabel];
+    [self.delegete DetailVCupdateTask ];
+    
 }
 
 - (IBAction)editTaskButtonPressed:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"toEditViewControllerSegue" sender:nil];
+    [self performSegueWithIdentifier:@"toEditViewControllerSegue" sender:sender];
 }
 
 

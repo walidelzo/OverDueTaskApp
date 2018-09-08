@@ -54,7 +54,7 @@
 }
 
 #pragma  mark -detail task delegete
--(void)DidupdateTaskLabel{
+-(void)DetailVCupdateTask{
     [self saveTasks];
     [self.tableView reloadData];
 }
@@ -90,7 +90,6 @@
 }
 
 -(void)saveTasks{
-    
     NSMutableArray *tasksAsPropertyLists=[[NSMutableArray alloc]init];
     for (int x=0 ;x<[self.taskObjects count];x++){
         [tasksAsPropertyLists addObject: [self taskObjectAsPropertList: self.taskObjects[x]] ];
@@ -141,7 +140,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellIdentifer=@"Cell";
     UITableViewCell *cell=[self.tableView dequeueReusableCellWithIdentifier:cellIdentifer];
-    WETask *task=[self.taskObjects objectAtIndex:indexPath.row];
+    WETask *task=[[WETask alloc]init];
+    task=[self.taskObjects objectAtIndex:indexPath.row];
     cell.textLabel.text=task.taskTitle;
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
     [dateformatter setDateFormat:@"yyyy-MM-dd"];
